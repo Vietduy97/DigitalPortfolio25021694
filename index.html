@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyễn Văn Việt Duy - Digital Portfolio</title>
+    <title>Nguyễn Văn Việt Duy - Digital Portfolio | UET-VNU</title>
     <meta name="description" content="Hồ sơ năng lực số và ứng dụng AI học thuật của sinh viên Nguyễn Văn Việt Duy - Trường Đại học Công nghệ - ĐHQGHN">
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,12 +40,6 @@
             
             --accent-success: #10b981; /* Emerald 500 */
             --accent-success-light: #ecfdf5;
-            
-            /* Gradients */
-            --grad-primary: linear-gradient(135deg, #0d9488 0%, #4f46e5 100%);
-            --grad-teal: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
-            --grad-indigo: linear-gradient(135deg, #4338ca 0%, #6366f1 100%);
-            --grad-card-header: linear-gradient(90deg, #f8fafc 0%, #f1f5f9 100%);
             
             /* Shadows */
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -144,6 +138,7 @@
         .premium-card:hover {
             box-shadow: var(--shadow-lg);
             border-color: var(--border-hover);
+            transform: translateY(-2px);
         }
 
         .badge {
@@ -232,6 +227,7 @@
             background-color: #10b981;
             color: #ffffff;
             box-shadow: 0 4px 10px rgba(16, 185, 129, 0.15);
+            transition: var(--transition-smooth);
         }
 
         .btn-drive:hover {
@@ -402,6 +398,12 @@
             font-weight: 400;
         }
 
+        .bio-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
         /* Avatar Container */
         .avatar-holder {
             display: flex;
@@ -448,6 +450,10 @@
         .profile-quick-card {
             padding: 1.8rem;
             margin-bottom: 2rem;
+        }
+
+        .profile-quick-card:hover {
+            transform: none; /* Tránh xoay lệch cho thẻ thông tin cố định */
         }
 
         .profile-quick-grid {
@@ -745,14 +751,16 @@
             border-bottom: 1px solid var(--border-color);
             color: var(--text-secondary);
             line-height: 1.4;
+            transition: var(--transition-fast);
         }
 
         .data-table tr:last-child td {
             border-bottom: none;
         }
 
-        .data-table tr:hover {
-            background-color: rgba(241, 245, 249, 0.4);
+        .data-table tr:hover td {
+            background-color: rgba(241, 245, 249, 0.6);
+            color: var(--text-primary);
         }
 
         /* Highlights */
@@ -801,6 +809,52 @@
             align-items: center;
             gap: 0.75rem;
             font-size: 0.9rem;
+            transition: var(--transition-smooth);
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-hover);
+            background: var(--bg-secondary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* ==========================================================================
+           GLASSMORPHIC SELF-REFLECTION BOX
+           ========================================================================== */
+        .self-reflection-box {
+            margin-top: 2.5rem;
+            padding: 1.5rem;
+            background: rgba(13, 148, 136, 0.03);
+            border-left: 4px solid var(--accent-primary);
+            border-radius: 0 12px 12px 0;
+            border-top: 1px solid rgba(13, 148, 136, 0.08);
+            border-right: 1px solid rgba(13, 148, 136, 0.08);
+            border-bottom: 1px solid rgba(13, 148, 136, 0.08);
+            transition: var(--transition-smooth);
+        }
+
+        .self-reflection-box:hover {
+            background: rgba(13, 148, 136, 0.06);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .self-reflection-box h5 {
+            font-size: 1rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+        }
+
+        .self-reflection-box p {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            margin: 0;
         }
 
         /* ==========================================================================
@@ -810,11 +864,27 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2.5rem;
-            margin-bottom: 4rem;
+            margin-bottom: 3.5rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reflection-grid:hover {
+            transform: translateY(-2px);
         }
 
         .reflection-card {
             padding: 2.2rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 4px solid var(--border-color);
+        }
+
+        .reflection-card:hover {
+            border-left-color: var(--accent-primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .reflection-card:nth-child(2):hover {
+            border-left-color: var(--accent-secondary);
         }
 
         .reflection-card h3 {
@@ -1016,19 +1086,24 @@
                 gap: 2.5rem;
                 text-align: center;
             }
+            
             .bio-actions {
                 justify-content: center;
             }
+            
             .avatar-holder {
                 order: -1;
             }
+            
             .goals-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
+            
             .assignments-layout {
                 grid-template-columns: 1fr;
             }
+            
             .task-sidebar {
                 position: static;
                 flex-direction: row;
@@ -1036,9 +1111,11 @@
                 padding: 0.5rem;
                 white-space: nowrap;
             }
+            
             .task-sidebar-header {
                 display: none;
             }
+            
             .task-menu-item button {
                 padding: 0.6rem 1rem;
             }
@@ -1048,18 +1125,23 @@
             .bio-title {
                 font-size: 2.75rem;
             }
+            
             .nav-menu {
-                display: none; /* Mobile navigation simplified */
+                display: none; /* Menu tối giản cho mobile */
             }
+            
             .task-pane-header {
                 padding: 1.5rem;
             }
+            
             .task-pane-body {
                 padding: 1.5rem;
             }
+            
             .screenshot-list {
                 grid-template-columns: 1fr;
             }
+            
             .reflection-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -1301,6 +1383,16 @@
                                         <div class="screenshot-item">Step 13: Cây thư mục hoàn chỉnh trên bộ nhớ Cloud</div>
                                     </div>
                                 </div>
+
+                                <!-- Structured Self-Reflection Box -->
+                                <div class="self-reflection-box">
+                                    <h5><i class="fa-solid fa-comment-dots"></i> Tự nhận xét & Bài học thu hoạch</h5>
+                                    <p>
+                                        <strong>Đã học được:</strong> Cách tổ chức cây thư mục chuẩn MECE khoa học, thiết lập quy tắc đặt tên tệp tin nhất quán <code>[MSSV]_[TenFile]_[NgayTao]</code> và thành thạo 12 thao tác quản lý dữ liệu trên máy tính.<br>
+                                        <strong>Khó khăn gặp phải:</strong> Phân loại và dọn dẹp khối lượng lớn tài liệu học tập cũ bị trùng lặp tích lũy từ thời phổ thông.<br>
+                                        <strong>Kinh nghiệm/Bài học:</strong> Tổ chức dữ liệu ngăn nắp ngay từ đầu giúp tối ưu hóa 200% tốc độ tìm kiếm tài liệu học tập và bảo vệ dữ liệu lâu dài.
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
@@ -1419,51 +1511,51 @@
                                             <tbody>
                                                 <tr>
                                                     <td>1</td>
-                                                    <td><em>"The Impact of AI Coding Assistants on Student Learning"</em> (Smith et al., 2023)</td>
+                                                    <td><em>"The Impact of AI Coding Assistants"</em> (Smith, 2023)</td>
                                                     <td>IEEE Transactions</td>
                                                     <td>Thực nghiệm ngẫu nhiên kiểm soát (RCT), Citations: 45</td>
-                                                    <td>Đo lường chính xác tốc độ và chất lượng code của sinh viên.</td>
-                                                    <td>Chưa đánh giá được khả năng hiểu lý thuyết sâu của sinh viên.</td>
+                                                    <td>Đo lường chính xác tốc độ code của SV.</td>
+                                                    <td>Chưa đánh giá khả năng hiểu lý thuyết sâu.</td>
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
-                                                    <td><em>"Generative AI in Computing Education: A Systematic Review"</em> (Lau, 2024)</td>
+                                                    <td><em>"Generative AI in Computing Education"</em> (Lau, 2024)</td>
                                                     <td>ACM Inroads</td>
-                                                    <td>Tổng quan hệ thống tài liệu từ 80 bài báo, Citations: 82</td>
-                                                    <td>Bức tranh toàn cảnh về các xu hướng công nghệ trong lớp học.</td>
-                                                    <td>Các nghiên cứu chủ yếu tập trung tại các nước phát triển.</td>
+                                                    <td>Tổng quan hệ thống từ 80 bài báo, Citations: 82</td>
+                                                    <td>Bức tranh toàn cảnh về xu hướng công nghệ trong lớp.</td>
+                                                    <td>Chủ yếu nghiên cứu ở nước phát triển.</td>
                                                 </tr>
                                                 <tr>
                                                     <td>3</td>
-                                                    <td><em>"Academic Integrity in the Age of LLMs"</em> (Jones & Wang, 2023)</td>
-                                                    <td>Elsevier - Computers & Ed</td>
-                                                    <td>Khảo sát định lượng trên 1200 sinh viên, Citations: 110</td>
-                                                    <td>Cung cấp tỷ lệ thực tế sinh viên sử dụng AI không khai báo.</td>
-                                                    <td>Dữ liệu tự khai báo (self-reported) có thể thiếu khách quan.</td>
+                                                    <td><em>"Academic Integrity in the Age of LLMs"</em> (Jones, 2023)</td>
+                                                    <td>Elsevier</td>
+                                                    <td>Khảo sát định lượng n=1200 sinh viên, Citations: 110</td>
+                                                    <td>Cung cấp tỷ lệ thực tế sinh viên sử dụng AI.</td>
+                                                    <td>Dữ liệu tự khai báo có thể thiếu khách quan.</td>
                                                 </tr>
                                                 <tr>
                                                     <td>4</td>
-                                                    <td><em>"Prompt Engineering for CS Students: A Pedagogical Approach"</em> (Miller, 2024)</td>
+                                                    <td><em>"Prompt Engineering for CS Students"</em> (Miller, 2024)</td>
                                                     <td>Springer</td>
-                                                    <td>Nghiên cứu điển hình (Case study) tại 2 lớp học, Citations: 12</td>
+                                                    <td>Nghiên cứu điển hình tại 2 lớp, Citations: 12</td>
                                                     <td>Hướng dẫn thiết kế chương trình học Prompt bài bản.</td>
-                                                    <td>Quy mô mẫu nhỏ (n=60), khó khái quát hóa.</td>
+                                                    <td>Quy mô mẫu nhỏ (n=60) khó khái quát.</td>
                                                 </tr>
                                                 <tr>
                                                     <td>5</td>
-                                                    <td><em>"AI-Enabled Automated Grading Systems for Source Code"</em> (Tan et al., 2023)</td>
+                                                    <td><em>"AI-Enabled Automated Grading Systems"</em> (Tan, 2023)</td>
                                                     <td>ScienceDirect</td>
-                                                    <td>Nghiên cứu phát triển công nghệ & đánh giá thuật toán, Citations: 34</td>
-                                                    <td>Đề xuất mô hình AI chấm điểm đạt độ chính xác tương đương giảng viên.</td>
-                                                    <td>Chi phí tính toán cao và khó áp dụng cho bài toán mở rộng.</td>
+                                                    <td>Nghiên cứu phát triển công nghệ, Citations: 34</td>
+                                                    <td>Độ chính xác tương đương giảng viên.</td>
+                                                    <td>Chi phí tính toán cao và khó mở rộng.</td>
                                                 </tr>
                                                 <tr>
                                                     <td>6</td>
-                                                    <td><em>"Tác động của AI đối với đào tạo lập trình tại Việt Nam"</em> (Nguyễn et al., 2024)</td>
-                                                    <td>Tạp chí Khoa học UET</td>
-                                                    <td>Khảo sát định tính (phỏng vấn sâu 15 giảng viên), Citations: 5</td>
-                                                    <td>Phân tích sát thực tế bối cảnh hạ tầng và văn hóa học đường Việt Nam.</td>
-                                                    <td>Chưa có số liệu thực nghiệm đo lường kết quả điểm số.</td>
+                                                    <td><em>"Tác động của AI đến đào tạo lập trình"</em> (Nguyễn, 2024)</td>
+                                                    <td>Tạp chí KH UET</td>
+                                                    <td>Khảo sát định tính phỏng vấn 15 GV, Citations: 5</td>
+                                                    <td>Sát thực tế bối cảnh hạ tầng Việt Nam.</td>
+                                                    <td>Chưa có số liệu thực nghiệm định lượng.</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -1471,6 +1563,16 @@
                                     <div class="highlight-box">
                                         <p><strong>Kết luận đánh giá:</strong> Các bài báo trên IEEE và ACM có độ tin cậy khoa học cao nhất nhờ quy trình phản biện nghiêm ngặt và số lượng trích dẫn lớn. Các tài liệu trong nước tuy số trích dẫn thấp hơn nhưng có giá trị thực tiễn rất cao khi áp dụng trực tiếp cho đối tượng sinh viên VNU.</p>
                                     </div>
+                                </div>
+
+                                <!-- Structured Self-Reflection Box -->
+                                <div class="self-reflection-box">
+                                    <h5><i class="fa-solid fa-comment-dots"></i> Tự nhận xét & Bài học thu hoạch</h5>
+                                    <p>
+                                        <strong>Đã học được:</strong> Cách sử dụng linh hoạt các toán tử tìm kiếm nâng cao (site, filetype, logic Boolean) và phương pháp đánh giá chéo tài liệu học thuật theo tiêu chí khoa học.<br>
+                                        <strong>Khó khăn gặp phải:</strong> Phân tích và thẩm định chéo các nguồn tin tiếng Việt khi chỉ số trích dẫn trực tuyến (citations) còn hạn chế.<br>
+                                        <strong>Kinh nghiệm/Bài học:</strong> Luôn đối chiếu dữ liệu giữa Google Scholar và hệ thống thư viện ĐHQGHN để đảm bảo tính xác thực, tránh trích dẫn các nguồn tin rác hoặc kém chất lượng.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -1551,6 +1653,16 @@
                                         <li><strong>Xác định vai trò và đối tượng (Persona & Audience):</strong> Đóng vai AI (ví dụ: giảng viên CNTT) và xác định người đọc (sinh viên năm nhất) để tối ưu hóa tông giọng giải thích.</li>
                                     </ol>
                                 </div>
+
+                                <!-- Structured Self-Reflection Box -->
+                                <div class="self-reflection-box">
+                                    <h5><i class="fa-solid fa-comment-dots"></i> Tự nhận xét & Bài học thu hoạch</h5>
+                                    <p>
+                                        <strong>Đã học được:</strong> Kỹ thuật viết Prompt tối ưu (Prompt V3: vai trò giảng viên UET, bối cảnh chi tiết, định dạng Markdown) giúp sinh câu hỏi ôn tập Vật lý đại cương cực kỳ sát thực tế.<br>
+                                        <strong>Khó khăn gặp phải:</strong> Kiểm soát các ràng buộc dữ liệu đầu vào để AI không tự ý tạo ra các công thức vật lý giả tưởng (ảo giác AI).<br>
+                                        <strong>Kinh nghiệm/Bài học:</strong> Muốn AI làm việc hiệu quả, bản thân phải có tư duy logic để xây dựng các câu lệnh chặt chẽ. Prompt chính là một dạng lập trình bằng ngôn ngữ tự nhiên.
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
@@ -1589,28 +1701,38 @@
                                         <div class="screenshot-item">
                                             <div>
                                                 <strong>Minh chứng Discord:</strong>
-                                                <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Ảnh chụp cuộc họp voice chat thảo luận đề tài nhóm và các phân kênh chat được chia mục rõ ràng.</span>
+                                                <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Ảnh họp voice chat thảo luận đề tài nhóm và các phân kênh chat được chia mục rõ ràng.</span>
                                             </div>
                                         </div>
                                         <div class="screenshot-item">
                                             <div>
                                                 <strong>Minh chứng Trello Board:</strong>
-                                                <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Ảnh chụp bảng Kanban của nhóm hiển thị các thẻ nhiệm vụ đã chuyển hoàn toàn sang cột Done đúng hạn.</span>
+                                                <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Ảnh bảng Kanban của nhóm hiển thị các thẻ nhiệm vụ đã chuyển hoàn toàn sang cột Done đúng hạn.</span>
                                             </div>
                                         </div>
                                         <div class="screenshot-item">
                                             <div>
                                                 <strong>Minh chứng Google Docs:</strong>
-                                                <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Ảnh chụp tài liệu báo cáo nhóm với lịch sử chỉnh sửa chi tiết và các phản hồi bình luận từ các thành viên.</span>
+                                                <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Ảnh tài liệu báo cáo nhóm với lịch sử chỉnh sửa chi tiết và các phản hồi bình luận từ các thành viên.</span>
                                             </div>
                                         </div>
                                         <div class="screenshot-item">
                                             <div>
                                                 <strong>Minh chứng Google Drive:</strong>
-                                                <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Ảnh chụp giao diện thư mục dùng chung của nhóm được cấu trúc chuẩn hóa theo nguyên tắc lưu trữ khoa học.</span>
+                                                <span style="display:block; font-size:0.8rem; color:var(--text-muted);">Ảnh giao diện thư mục dùng chung của nhóm được cấu trúc chuẩn hóa theo nguyên tắc lưu trữ khoa học.</span>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+
+                                <!-- Structured Self-Reflection Box -->
+                                <div class="self-reflection-box">
+                                    <h5><i class="fa-solid fa-comment-dots"></i> Tự nhận xét & Bài học thu hoạch</h5>
+                                    <p>
+                                        <strong>Đã học được:</strong> Cách phối hợp làm việc nhóm phi tập trung qua bảng Kanban trên Trello, soạn thảo văn bản Google Docs và giao tiếp nhóm trên Discord.<br>
+                                        <strong>Khó khăn gặp phải:</strong> Trễ deadline cục bộ do các thành viên ban đầu chưa có thói quen cập nhật trạng thái thẻ công việc trên Trello.<br>
+                                        <strong>Kinh nghiệm/Bài học:</strong> Cài đặt Trello Bot tự động nhắc nhở lịch Due Date về Discord chung giúp nâng cao đáng kể kỷ luật làm việc nhóm mà không cần đôn đốc thủ công.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -1659,35 +1781,45 @@
                                                     <td><strong>Lên ý tưởng & Dàn bài</strong></td>
                                                     <td>Claude 3.5 Sonnet</td>
                                                     <td>AI 70% – Tác giả 30%</td>
-                                                    <td>AI gợi ý cấu trúc bài viết; Tác giả định hướng lựa chọn ý tưởng phù hợp với văn hóa sinh viên UET.</td>
+                                                    <td>AI gợi ý cấu trúc; Tác giả định hướng lựa chọn ý tưởng phù hợp với sinh viên UET.</td>
                                                 </tr>
                                                 <tr>
                                                     <td><strong>Viết nội dung thô</strong></td>
                                                     <td>ChatGPT (GPT-4o)</td>
                                                     <td>AI 80% – Tác giả 20%</td>
-                                                    <td>AI sinh văn bản thô theo các gợi ý chi tiết của tác giả; Tác giả kiểm duyệt sự chính xác của thông tin tại chỗ.</td>
+                                                    <td>AI sinh văn bản thô theo prompt chi tiết; Tác giả kiểm duyệt tại chỗ.</td>
                                                 </tr>
                                                 <tr>
                                                     <td><strong>Thiết kế hình ảnh</strong></td>
                                                     <td>DALL-E 3</td>
                                                     <td>AI 90% – Tác giả 10%</td>
-                                                    <td>AI vẽ hình minh họa theo prompt mô tả của tác giả; Tác giả lựa chọn và crop ảnh phù hợp bố cục.</td>
+                                                    <td>AI vẽ hình minh họa theo prompt; Tác giả lựa chọn và chỉnh sửa.</td>
                                                 </tr>
                                                 <tr>
                                                     <td><strong>Biên tập & Cá nhân hóa</strong></td>
                                                     <td>Trí tuệ con người</td>
                                                     <td>AI 0% – Tác giả 100%</td>
-                                                    <td>Tác giả trực tiếp tinh chỉnh văn phong, kiểm tra lỗi chính tả, thay thế các câu từ rập khuôn của AI và bổ sung trải nghiệm thực tế.</td>
+                                                    <td>Tác giả trực tiếp tinh chỉnh văn phong, sửa lỗi và chèn trải nghiệm thực tế học tập.</td>
                                                 </tr>
                                                 <tr style="background-color: var(--accent-primary-light); font-weight: 700; color: var(--accent-primary);">
                                                     <td>Tổng thể dự án</td>
-                                                    <td>Claude / ChatGPT / DALL-E / Con người</td>
+                                                    <td>Claude/ChatGPT/DALL-E</td>
                                                     <td>AI 60% – Tác giả 40%</td>
                                                     <td><strong>Thời gian thực hiện giảm 50%</strong> so với phương pháp viết thủ công truyền thống.</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
+                                </div>
+
+                                <!-- Structured Self-Reflection Box -->
+                                <div class="self-reflection-box">
+                                    <h5><i class="fa-solid fa-comment-dots"></i> Tự nhận xét & Bài học thu hoạch</h5>
+                                    <p>
+                                        <strong>Đã học được:</strong> Quy trình phối hợp người - máy (brainstorm ý tưởng bằng Claude, sinh thô bằng ChatGPT, vẽ minh họa bằng DALL-E) để sáng tạo sản phẩm số chuyên nghiệp.<br>
+                                        <strong>Khó khăn gặp phải:</strong> Kiểm soát và chỉnh sửa văn phong của bản nháp thô từ AI để bài viết có cảm xúc tự nhiên, tránh bị rập khuôn từ ngữ máy móc.<br>
+                                        <strong>Kinh nghiệm/Bài học:</strong> AI hỗ trợ tối đa hóa 50% tốc độ dựng bài, nhưng lăng kính trải nghiệm thực tế và kỹ năng biên tập của con người mới quyết định giá trị thật của sản phẩm.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -1731,6 +1863,16 @@
                                         </li>
                                     </ul>
                                 </div>
+
+                                <!-- Structured Self-Reflection Box -->
+                                <div class="self-reflection-box">
+                                    <h5><i class="fa-solid fa-comment-dots"></i> Tự nhận xét & Bài học thu hoạch</h5>
+                                    <p>
+                                        <strong>Đã học được:</strong> Ranh giới đạo đức số giữa việc "Dùng AI định hướng tư duy" và "Sao chép bài trực tiếp từ AI" cùng chính sách sử dụng AI học thuật của ĐHQGHN.<br>
+                                        <strong>Khó khăn gặp phải:</strong> Kiểm chứng chéo và truy xuất nguồn gốc của các số liệu kinh tế vĩ mô do AI tự sinh ra trong bài luận viết.<br>
+                                        <strong>Kinh nghiệm/Bài học:</strong> Sự liêm chính học thuật là tài sản lớn nhất của sinh viên UET. Luôn chủ động khai báo mức độ đóng góp của AI và chịu trách nhiệm 100% cho đầu ra.
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
@@ -1741,7 +1883,7 @@
         </section>
 
         <!-- ==========================================================================
-             TAB 3: TỔNG KẾT
+             TAB 3: TỔNG KẾT & NGUYÊN TẮC AI
              ========================================================================== -->
         <section class="tab-section" id="sec-reflection">
             <div class="container">
@@ -1772,13 +1914,8 @@
                         <h3><i class="fa-solid fa-triangle-exclamation"></i> Khó khăn & Kế hoạch tương lai</h3>
                         
                         <div class="reflect-block">
-                            <h4>Khó khăn gặp phải</h4>
-                            <p>Việc điều phối tiến trình công việc của nhóm trên các ứng dụng cộng tác đôi khi bị nghẽn do sự lệch pha về múi giờ sinh hoạt tự do và thói quen cập nhật tiến trình chưa đều đặn của một vài thành viên.</p>
-                        </div>
-                        
-                        <div class="reflect-block">
-                            <h4>Giải pháp khắc phục</h4>
-                            <p>Tôi đã chủ động thiết lập và cài đặt Bot tự động nhắc nhở thời hạn công việc (due dates) đồng bộ từ bảng Trello trực tiếp về kênh Discord chung để mọi thành viên đều nhận diện và hoàn thành công việc tức thì.</p>
+                            <h4>Khó khăn gặp phải & Giải pháp</h4>
+                            <p>Khó khăn lớn nhất trong lộ trình là việc duy trì nhịp độ làm việc nhóm đồng bộ. Chúng tôi đã khắc phục bằng cách thiết lập và cài đặt Bot tự động nhắc nhở thời hạn công việc (due dates) đồng bộ từ bảng Trello trực tiếp về kênh Discord chung để mọi thành viên đều nhận diện và hoàn thành công việc tức thì.</p>
                         </div>
 
                         <div class="reflect-block" style="background-color: var(--accent-primary-light); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent-primary);">
@@ -1942,8 +2079,19 @@
             });
 
             // Activate chosen menu item & content pane
-            document.getElementById('menu-task' + taskIndex).classList.add('active');
-            document.getElementById('pane-task' + taskIndex).classList.add('active');
+            const menuItem = document.getElementById('menu-task' + taskIndex);
+            if (menuItem) menuItem.classList.add('active');
+            
+            const paneItem = document.getElementById('pane-task' + taskIndex);
+            if (paneItem) paneItem.classList.add('active');
+
+            // Smooth scroll to the task content pane on tablet/mobile
+            if (window.innerWidth <= 1024) {
+                const contentArea = document.querySelector('.task-content-area');
+                if (contentArea) {
+                    contentArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
         }
 
         /* 4. ACCORDION CONTROL (6 PRINCIPLES) */
